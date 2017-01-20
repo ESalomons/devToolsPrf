@@ -1,6 +1,10 @@
 package helpdesk;
 
-import helpdesk.data.*;
+import helpdesk.data.ServiceManager;
+import helpdesk.data.SoftwareTicket;
+import helpdesk.data.HardwareTicket;
+import helpdesk.data.Ticket;
+import helpdesk.data.User;
 
 import java.io.File;
 import java.io.FileNotFoundException;
