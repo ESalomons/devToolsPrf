@@ -89,16 +89,16 @@ public class Helpdesk {
             String[] items = line.split(";");
             if (items.length >= 6) {
                 int ticketNr = 0;
-                try{
+                try {
                     ticketNr = Integer.parseInt(items[1]);
-                } catch (NumberFormatException nfe){
+                } catch (NumberFormatException nfe) {
                     throw new HelpdeskException("Invalid ticket number");
                 }
                 String ticketType = items[2];
                 User owner = findUserByUsername(items[3]);
                 String specialItem = items[4];
                 String description = items[5];
-                if(owner == null){
+                if (owner == null) {
                     throw new HelpdeskException("Unknown user");
                 }
                 if (ticketType.equalsIgnoreCase("Software")) {
@@ -108,13 +108,13 @@ public class Helpdesk {
                 } else {
                     throw new HelpdeskException("Unknow ticket type");
                 }
-                if(items.length == 8){
+                if (items.length == 8) {
                     User handler = findUserByUsername(items[6]);
                     String solution = items[7];
-                    if(handler instanceof ServiceManager){
-                       ticket.setSolution((ServiceManager) handler,solution);
+                    if (handler instanceof ServiceManager) {
+                        ticket.setSolution((ServiceManager) handler, solution);
                     }
-                } else if (items.length > 6){
+                } else if (items.length > 6) {
                     throw new HelpdeskException("Too many items for ticket");
                 }
             } else {
@@ -143,12 +143,13 @@ public class Helpdesk {
 
     /**
      * Helper method for finding tickets using a ticket number
+     *
      * @param number Ticket number
      * @return Ticket object that has the indicated number, null if no such Ticket exists
      */
-    private Ticket findTicketByTicketnumber(int number){
-        for (Ticket ticket: tickets){
-            if(ticket.hasNumber(number)){
+    private Ticket findTicketByTicketnumber(int number) {
+        for (Ticket ticket : tickets) {
+            if (ticket.hasNumber(number)) {
                 return ticket;
             }
         }
@@ -163,11 +164,11 @@ public class Helpdesk {
      */
     public void exportData(String filename) throws FileNotFoundException {
         PrintWriter out = new PrintWriter(filename);
-        for(User user: users){
+        for (User user : users) {
             out.println(user.toCSV());
         }
 
-        for(Ticket ticket: tickets){
+        for (Ticket ticket : tickets) {
             out.println(ticket.toCSV());
         }
         out.close();
@@ -182,7 +183,7 @@ public class Helpdesk {
      */
     public boolean login(String username, String password) {
         User user = findUserByUsername(username);
-        if(user == null){
+        if (user == null) {
             return false;
         }
         currentUser = user;
@@ -211,7 +212,7 @@ public class Helpdesk {
      * @return True, if the user is a manager
      */
     public boolean isManager() {
-        if(!isLoggedOn()){
+        if (!isLoggedOn()) {
             return false;
         }
         return currentUser instanceof ServiceManager;
@@ -224,11 +225,11 @@ public class Helpdesk {
      * @param machineCode Code of the computer
      */
     public int addHardwareTicket(String description, String machineCode) {
-        if(!isLoggedOn()){
+        if (!isLoggedOn()) {
             return -1;
         }
         int ticketNr = tickets.size() + 1;
-        tickets.add(new HardwareTicket(ticketNr,description, currentUser, machineCode ));
+        tickets.add(new HardwareTicket(ticketNr, description, currentUser, machineCode));
         return ticketNr;
     }
 
@@ -239,11 +240,11 @@ public class Helpdesk {
      * @param softwareName Name of the piece of software
      */
     public int addSoftwareTicket(String description, String softwareName) {
-        if(!isLoggedOn()){
+        if (!isLoggedOn()) {
             return -1;
         }
         int ticketNr = tickets.size() + 1;
-        tickets.add(new SoftwareTicket(ticketNr,description, currentUser, softwareName ));
+        tickets.add(new SoftwareTicket(ticketNr, description, currentUser, softwareName));
         return ticketNr;
     }
 
@@ -255,18 +256,18 @@ public class Helpdesk {
      * @throws HelpdeskException When the ticket is not found, the current user is no manager or the ticket is already resolved
      */
     public void resolveTicket(int ticketNumber, String response) throws HelpdeskException {
-        if(!isLoggedOn()){
+        if (!isLoggedOn()) {
             throw new HelpdeskException("Nobody logged in");
         }
-        if (!(currentUser instanceof ServiceManager)){
+        if (!(currentUser instanceof ServiceManager)) {
             throw new HelpdeskException("User " + currentUser.getName() + " is not a service manager");
         }
         Ticket ticket = findTicketByTicketnumber(ticketNumber);
-        if(ticket == null){
+        if (ticket == null) {
             throw new HelpdeskException("Invalid ticket number");
         }
 
-        if(ticket.isResolved()){
+        if (ticket.isResolved()) {
             throw new HelpdeskException("Ticket already resolved");
         }
         ticket.setSolution((ServiceManager) currentUser, response);
@@ -277,8 +278,8 @@ public class Helpdesk {
      */
     public void printMyTickets() {
         System.out.println("My tickets: ");
-        for(Ticket tk: tickets){
-            if(tk.getOwner().equals(currentUser)){
+        for (Ticket tk : tickets) {
+            if (tk.getOwner().equals(currentUser)) {
                 System.out.println(tk);
             }
         }
@@ -290,11 +291,11 @@ public class Helpdesk {
      * @throws HelpdeskException Exception is thrown when the user that is logged on has not enough privileges
      */
     public void printOpenTickets() throws HelpdeskException {
-        if(!(currentUser instanceof ServiceManager)){
+        if (!(currentUser instanceof ServiceManager)) {
             throw new HelpdeskException("Operation not allowed for users.");
         }
-        for(Ticket tk: tickets){
-            if(!tk.isResolved()){
+        for (Ticket tk : tickets) {
+            if (!tk.isResolved()) {
                 System.out.println(tk);
             }
         }
@@ -306,10 +307,10 @@ public class Helpdesk {
      * @throws HelpdeskException Exception is thrown when the user that is logged on has not enough privileges
      */
     public void printAllTickets() throws HelpdeskException {
-        if(!(currentUser instanceof ServiceManager)){
+        if (!(currentUser instanceof ServiceManager)) {
             throw new HelpdeskException("Operation not allowed for users.");
         }
-        for(Ticket ticket:tickets){
+        for (Ticket ticket : tickets) {
             System.out.println(ticket + "\n");
         }
     }
@@ -320,10 +321,10 @@ public class Helpdesk {
      * @throws HelpdeskException Exception is thrown when the user that is logged is not employee of the helpdesk
      */
     public void printUsers() throws HelpdeskException {
-        if(!(currentUser instanceof ServiceManager)){
+        if (!(currentUser instanceof ServiceManager)) {
             throw new HelpdeskException("Operation not allowed for users.");
         }
-        for(User user: users){
+        for (User user : users) {
             System.out.println(user);
         }
     }

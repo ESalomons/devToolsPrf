@@ -2,6 +2,7 @@ import helpdesk.data.HardwareTicket;
 import helpdesk.data.Ticket;
 import helpdesk.data.User;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**
@@ -15,7 +16,7 @@ public class TicketTester {
         User user = new User("Henk", ",,");
         Ticket ticket = new HardwareTicket(10, "kapot", user, "abc#$*");
 
-        assertEquals("Henk",ticket.getOwner().getName());
+        assertEquals("Henk", ticket.getOwner().getName());
     }
 
     @Test
@@ -23,6 +24,6 @@ public class TicketTester {
         User user = new User("Henk", ",,");
         Ticket ticket = new HardwareTicket(10, "kapot", user, "abc#$*");
 
-        assertEquals("Henk",ticket.getOwner().getName());
+        assertEquals("Henk", ticket.getOwner().getName());
     }
 }
