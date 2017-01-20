@@ -1,0 +1,24 @@
+# The following lines contain the users of the system
+# Each line consists of: UserType;Username;Password
+User;Evert;test
+User;Ruud;test
+User;Tristan;test
+User;Steven;test
+User;Rogier;test
+User;Vincent;test
+Manager;Oliver;test;Lecturer;HBO-IT
+Manager;Erik;test;Lecturer;HBO-ICT
+Manager;Peter;test;Researcher;HBO-ICT
+
+# The following lines contain the tickets in the system
+# There are two types of tickets: open tickets and already resolved tickets.
+# Both tickets start with: Ticket;TicketNumber;Type(hardware or software;Username of the user that created the ticket;Machineid or Softwarename (depending on the type);Problem description
+# A resolved ticket also contains:
+# ;Username of the manager that resolved the problem;Solution
+
+Ticket;1;Hardware;Evert;MAC12345;Where is the power button of my computer?;Oliver;The powerbutton is on the backside of the Macintosh machine.
+Ticket;2;Software;Steven;MacOS;My computer contains MacOS, but I am a Windows user...
+Ticket;3;Software;Tristan;Angry Birds;I am stuck at level 15 of Angry Birds;Erik;Stop fooling around and get back to work. BTW: touch the screen twice to let the blue birds split.
+Ticket;4;Hardware;Rogier;WIN98765;How can I connect a mouse to my computer?;Peter;A mouse contains a USB-connector which attached to the USB-port of the system. It is a simple plug and play operation which you can perform yourself.
+Ticket;5;Software;Vincent;Windows;Help, my computer contains a virus. Is it contagious to humans?
+Ticket;6;Hardware;Ruud;Canon Pixma XPR123;I bought a red inktjetprinter. Why does it only print in grayscale?

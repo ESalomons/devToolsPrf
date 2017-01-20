@@ -1,0 +1,45 @@
+apply plugin: 'java'
+apply plugin: 'findbugs'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+
+sourceSets {
+    main {
+        java.srcDirs = ['src']
+    }
+    test {
+        java.srcDirs = ['test']
+    }
+}
+
+jar {
+    manifest.attributes("Main-Class": "MyFirstJavaProgram")
+}
+
+findbugs {
+    toolVersion = '3.0.1'
+    ignoreFailures = true
+    effort = 'max'
+}
+
+checkstyle {
+    toolVersion = '7.3'
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}
+
+repositories {
+    mavenCentral()
+}

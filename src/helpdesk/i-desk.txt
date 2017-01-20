@@ -1,0 +1,16 @@
+User;Evert;test
+User;Ruud;test
+User;Tristan;test
+User;Steven;test
+User;Rogier;test
+User;Vincent;test
+Manager;Oliver;test;Lecturer;HBO-IT
+Manager;Erik;test;Lecturer;HBO-ICT
+Manager;Peter;test;Researcher;HBO-ICT
+Ticket;1;Hardware;Evert;MAC12345;Where is the power button of my computer?;Oliver;The powerbutton is on the backside of the Macintosh machine.
+Ticket;2;Software;Steven;MacOS;My computer contains MacOS, but I am a Windows user...
+Ticket;3;Software;Tristan;Angry Birds;I am stuck at level 15 of Angry Birds;Erik;Stop fooling around and get back to work. BTW: touch the screen twice to let the blue birds split.
+Ticket;4;Hardware;Rogier;WIN98765;How can I connect a mouse to my computer?;Peter;A mouse contains a USB-connector which attached to the USB-port of the system. It is a simple plug and play operation which you can perform yourself.
+Ticket;5;Software;Vincent;Windows;Help, my computer contains a virus. Is it contagious to humans?;Peter;Only if it's the feared H5N1-variant
+Ticket;6;Hardware;Ruud;Canon Pixma XPR123;I bought a red inktjetprinter. Why does it only print in grayscale?
+Ticket;7;Hardware;Oliver;83Ih;ding doet het niet
