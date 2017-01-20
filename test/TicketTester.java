@@ -23,6 +23,6 @@ public class TicketTester {
         User user = new User("Henk", ",,");
         Ticket ticket = new HardwareTicket(10, "kapot", user, "abc#$*");
 
-        assertEquals("Piet",ticket.getOwner().getName());
+        assertEquals("Henk",ticket.getOwner().getName());
     }
 }
