@@ -40,6 +40,11 @@ tasks.withType(Checkstyle) {
     }
 }
 
+dependencies {
+    testCompile 'junit:junit:4.12'
+    compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+}
+
 repositories {
     mavenCentral()
 }
