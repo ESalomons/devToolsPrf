@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'findbugs'
 apply plugin: 'idea'
 apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
 
 sourceSets {
     main {
@@ -48,3 +49,12 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+check.dependsOn jacocoTestReport
