@@ -1,6 +1,8 @@
 import helpdesk.data.HardwareTicket;
+import helpdesk.data.ServiceManager;
 import helpdesk.data.Ticket;
 import helpdesk.data.User;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,20 +12,31 @@ import static org.junit.Assert.*;
  *         created on 20/01/17.
  */
 public class TicketTester {
+    private User henk;
+    private HardwareTicket hTicket;
+
+    @Before
+    public void setup() {
+        henk = new User("Henk", ",,");
+        hTicket = new HardwareTicket(10, "kapot", henk, "abc#$*");
+    }
 
     @Test
     public void createTicket() {
-        User user = new User("Henk", ",,");
-        Ticket ticket = new HardwareTicket(10, "kapot", user, "abc#$*");
-
-        assertEquals("Henk", ticket.getOwner().getName());
+        assertEquals("Henk", hTicket.getOwner().getName());
     }
 
     @Test
     public void createTicketFalse() {
-        User user = new User("Henk", ",,");
-        Ticket ticket = new HardwareTicket(10, "kapot", user, "abc#$*");
 
-        assertEquals("Henk", ticket.getOwner().getName());
+        assertEquals("Henk", hTicket.getOwner().getName());
+    }
+
+    @Test
+    public void toStringTest(){
+        Ticket t = hTicket;
+        assertNotEquals("dinges", t.toString());
+        t.setSolution(new ServiceManager("Piet","pt","nothing","ITSM"), "ja");
+        assertNotEquals("dinges", t.toString());
     }
 }
