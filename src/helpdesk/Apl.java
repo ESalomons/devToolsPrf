@@ -63,14 +63,14 @@ public class Apl {
                     System.out.println("Please enter the type (hardware or software):");
                     String type = askString();
 
-                    while (!type.equalsIgnoreCase("hardware") && !type.equalsIgnoreCase("software")) {
+                    while (!"hardware".equalsIgnoreCase(type) && !"software".equalsIgnoreCase(type)) {
                         type = askString();
                     }
 
                     System.out.println("Please enter the description:");
                     String description = askString();
 
-                    if (type.equalsIgnoreCase("hardware")) {
+                    if ("hardware".equalsIgnoreCase(type)) {
                         System.out.println("Please enter the machineid:");
                         String machineId = askString();
                         int ticketNumber = helpdesk.addHardwareTicket(description, machineId);
