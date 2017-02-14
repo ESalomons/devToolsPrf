@@ -18,7 +18,7 @@ sourceSets {
 }
 
 jar {
-    manifest.attributes("Main-Class": "MyFirstJavaProgram")
+    manifest.attributes("Main-Class": "helpdesk.Apl")
 }
 
 findbugs {

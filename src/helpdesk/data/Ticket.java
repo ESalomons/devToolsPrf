@@ -8,7 +8,7 @@ public abstract class Ticket implements Exportable {
     private String description;
     private String solution;
     private User owner;
-    private ServiceManager handler;
+    private ServiceManager manager;
 
     public Ticket(int number, String description, User owner) {
         this.number = number;
@@ -21,7 +21,7 @@ public abstract class Ticket implements Exportable {
     protected abstract String getProductDescription();
 
     public void setSolution(ServiceManager handler, String solution) {
-        this.handler = handler;
+        this.manager = handler;
         this.solution = solution;
     }
 
@@ -37,8 +37,8 @@ public abstract class Ticket implements Exportable {
     public String toCSV() {
         String result = String.format("Ticket;%d;%s;%s;%s;%s", number, getTicketType(),
                 owner.getName(), getProductDescription(), description);
-        if(handler != null){
-            result = String.format("%s;%s;%s",result, handler.getName(),solution);
+        if(manager != null){
+            result = String.format("%s;%s;%s",result, manager.getName(),solution);
         }
         return result;
     }
@@ -52,7 +52,7 @@ public abstract class Ticket implements Exportable {
         if(isResolved()){
             result += String.format("\n\tSolved by:\t%s" +
                     "\n\tSolution:\t%s"
-                    , handler.getName(), solution);
+                    , manager.getName(), solution);
         }
         return result;
     }
