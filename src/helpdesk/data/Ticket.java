@@ -37,24 +37,25 @@ public abstract class Ticket implements Exportable {
     public String toCSV() {
         String result = String.format("Ticket;%d;%s;%s;%s;%s", number, getTicketType(),
                 owner.getName(), getProductDescription(), description);
-        if(manager != null){
-            result = String.format("%s;%s;%s",result, manager.getName(),solution);
+        if (manager != null) {
+            result = String.format("%s;%s;%s", result, manager.getName(), solution);
         }
         return result;
     }
 
-    public String toString(){
+    public String toString() {
         String result = String.format(String.format("Ticket nr: %d (%s). " +
                         "\n\tUser:\t%s." +
                         "\n\tProduct:\t%s" +
                         "\n\tProblem:\t%s"
-                        , number, getTicketType(), owner.getName(), getProductDescription(), description));
-        if(isResolved()){
+                , number, getTicketType(), owner.getName(),
+                getProductDescription(), description));
+        if (isResolved()) {
             result += String.format("\n\tSolved by:\t%s" +
-                    "\n\tSolution:\t%s"
+                            "\n\tSolution:\t%s"
                     , manager.getName(), solution);
         }
-        
+
         return result;
     }
 

@@ -18,7 +18,7 @@ public class Apl {
         String path = "src/uitwerkingen/week7/helpdesk/";
         try {
             numObjects = helpdesk.importData(path + "i-desk.txt");
-        } catch (HelpdeskException e) {
+        } catch (HelpdeskException he) {
             System.err.println(e.getMessage());
         }
         System.out.println("Read: " + numObjects + " objects.");
@@ -90,7 +90,7 @@ public class Apl {
 
                     try {
                         helpdesk.resolveTicket(number, response);
-                    } catch (HelpdeskException e) {
+                    } catch (HelpdeskException hde) {
                         System.err.println(e.getMessage());
                     }
                 } else if (choice == 3) {
