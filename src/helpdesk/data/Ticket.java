@@ -54,6 +54,7 @@ public abstract class Ticket implements Exportable {
                     "\n\tSolution:\t%s"
                     , manager.getName(), solution);
         }
+        
         return result;
     }
 
