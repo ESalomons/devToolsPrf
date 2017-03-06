@@ -19,7 +19,7 @@ public class Apl {
         try {
             numObjects = helpdesk.importData(path + "i-desk.txt");
         } catch (HelpdeskException he) {
-            System.err.println(e.getMessage());
+            System.err.println(he.getMessage());
         }
         System.out.println("Read: " + numObjects + " objects.");
 
@@ -91,7 +91,7 @@ public class Apl {
                     try {
                         helpdesk.resolveTicket(number, response);
                     } catch (HelpdeskException hde) {
-                        System.err.println(e.getMessage());
+                        System.err.println(hde.getMessage());
                     }
                 } else if (choice == 3) {
                     System.out.println("Show my tickets:");
