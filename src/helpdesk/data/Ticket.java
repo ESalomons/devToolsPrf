@@ -45,14 +45,14 @@ public abstract class Ticket implements Exportable {
 
     public String toString() {
         String result = String.format(String.format("Ticket nr: %d (%s). " +
-                        "\n\tUser:\t%s." +
-                        "\n\tProduct:\t%s" +
-                        "\n\tProblem:\t%s"
+                        "%n\tUser:\t%s." +
+                        "%n\tProduct:\t%s" +
+                        "%n\tProblem:\t%s"
                 , number, getTicketType(), owner.getName(),
                 getProductDescription(), description));
         if (isResolved()) {
-            result += String.format("\n\tSolved by:\t%s" +
-                            "\n\tSolution:\t%s"
+            result += String.format("%n\tSolved by:\t%s" +
+                            "%n\tSolution:\t%s"
                     , manager.getName(), solution);
         }
 

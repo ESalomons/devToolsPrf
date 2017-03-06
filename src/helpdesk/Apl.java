@@ -4,12 +4,17 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * APL for the helpdesk
+ * APL for the helpdesk.
  * You don't have to make any adjustments to this class
  *
  * @author Evert Duipmans
  */
 public class Apl {
+
+    /**
+     * Main method.
+     * @param args
+     */
     public static void main(String[] args) {
         Helpdesk helpdesk = new Helpdesk();
 
@@ -146,7 +151,7 @@ public class Apl {
         int enteredNumber = -1;
         boolean askAgain = true;
         while (askAgain) {
-            Scanner input = new Scanner(System.in);
+            Scanner input = new Scanner(System.in,"utf-8");
             try {
                 enteredNumber = Integer.parseInt(input.nextLine());
                 askAgain = false;
@@ -167,7 +172,7 @@ public class Apl {
         String enteredString = "";
         boolean askAgain = true;
         while (askAgain) {
-            Scanner input = new Scanner(System.in);
+            Scanner input = new Scanner(System.in, "utf-8");
             enteredString = input.nextLine();
             if (enteredString.length() != 0) {
                 askAgain = false;
